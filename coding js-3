@@ -1,0 +1,21 @@
+/**
+ * @param {number} n
+ * @return {Function} counter
+ */
+var createCounter = function(n) {
+    // Initialize the current value with n
+    let current = n;
+    
+    // Return the counter function
+    return function() {
+        // Return the current value and then increment it
+        return current++;
+    };
+};
+
+/** 
+ * const counter = createCounter(10)
+ * counter() // 10
+ * counter() // 11
+ * counter() // 12
+ */
