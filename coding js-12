@@ -1,0 +1,34 @@
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+function memoize(fn) {
+    const cache = {}; // Cache to store results
+    let callCount = 0; // To track the number of function calls
+
+    return function(...args) {
+        const key = JSON.stringify(args); // Create a unique key based on arguments
+        
+        if (cache.hasOwnProperty(key)) {
+            return cache[key]; // Return cached result if available
+        }
+        
+        const result = fn(...args); // Call the original function
+        cache[key] = result; // Store the result in the cache
+        callCount++; // Increment the call count
+
+        return result;
+    };
+}
+
+
+/** 
+ * let callCount = 0;
+ * const memoizedFn = memoize(function (a, b) {
+ *	 callCount += 1;
+ *   return a + b;
+ * })
+ * memoizedFn(2, 3) // 5
+ * memoizedFn(2, 3) // 5
+ * console.log(callCount) // 1 
+ */
