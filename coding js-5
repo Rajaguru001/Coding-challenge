@@ -1,0 +1,30 @@
+/**
+ * @param {integer} init
+ * @return { increment: Function, decrement: Function, reset: Function }
+ */
+var createCounter = function(init) {
+    let current = init;  // Initialize the current value with init
+    
+    // Return an object with the three methods
+    return {
+        increment: function() {
+            current += 1;  // Increase the current value by 1
+            return current;  // Return the updated value
+        },
+        decrement: function() {
+            current -= 1;  // Decrease the current value by 1
+            return current;  // Return the updated value
+        },
+        reset: function() {
+            current = init;  // Reset the current value to the initial value
+            return current;  // Return the reset value
+        }
+    };
+};
+
+/**
+ * const counter = createCounter(5)
+ * counter.increment(); // 6
+ * counter.reset(); // 5
+ * counter.decrement(); // 4
+ */
